@@ -1529,13 +1529,13 @@ pub enum Error {
     TypeError(#[from] TypeError),
     #[error("Errors:\n{}", ListDisplay(.0, "\n"))]
     TypeErrors(Vec<TypeError>),
-    #[error("{1}\nCheck failed: \n{}", ListDisplay(.0, "\n"))]
+    #[error("{}\nCheck failed: \n{}", .1, ListDisplay(.0, "\n"))]
     CheckError(Vec<Fact>, Span),
     #[error("{1}\nNo such ruleset: {0}")]
     NoSuchRuleset(Symbol, Span),
     #[error("{1}\nAttempted to add a rule to combined ruleset {0}. Combined rulesets may only depend on other rulesets.")]
     CombinedRulesetError(Symbol, Span),
-    #[error("Evaluating primitive {0:?} failed. ({0:?} {:?})", ListDebug(.1, " "))]
+    #[error("Evaluating primitive {:?} failed. ({:?} {:?})", .0, .0, ListDebug(.1, " "))]
     PrimitiveError(Primitive, Vec<Value>),
     #[error("Illegal merge attempted for function {0}, {1:?} != {2:?}")]
     MergeError(Symbol, Value, Value),

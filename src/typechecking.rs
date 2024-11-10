@@ -512,7 +512,7 @@ pub enum TypeError {
     FunctionTypeMismatch(ArcSort, Vec<ArcSort>, ArcSort, Vec<ArcSort>),
     #[error("{1}\nPresort {0} not found.")]
     PresortNotFound(Symbol, Span),
-    #[error("{}\nFailed to infer a type for: {0}", .0.span())]
+    #[error("{}\nFailed to infer a type for: {}", .0.span(), .0)]
     InferenceFailure(Expr),
     #[error("{1}\nVariable {0} was already defined")]
     AlreadyDefined(Symbol, Span),
